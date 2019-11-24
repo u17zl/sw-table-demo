@@ -10,7 +10,6 @@ const tableReducer = (
   state = initState,
   { type, payload }: { type: string; payload: any }
 ) => {
-  console.log(payload);
   switch (type) {
     case TABLE_FETCHING:
       return { ...state, isFetching: true };

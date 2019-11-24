@@ -3,8 +3,8 @@ import { FETCH_TABLE, TABLE_FETCHING, PAGI_TABLE } from "./actionTypes";
 import stripHttps from "../../utils/stripHttps";
 
 export const fetchTable = () => (dispatch: any) => {
-  console.log("asdasd");
   dispatch({ type: TABLE_FETCHING });
+
   Axios.get("/swapi.co/api/people")
     .then(res => {
       console.log(res);
@@ -16,8 +16,8 @@ export const fetchTable = () => (dispatch: any) => {
 };
 
 export const pagiTable = (url: string) => (dispatch: any) => {
-  console.log("asdasd");
   dispatch({ type: TABLE_FETCHING });
+
   Axios.get(stripHttps(url))
     .then(res => {
       console.log(res);

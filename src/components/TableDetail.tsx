@@ -7,7 +7,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 
 export interface IProps {}
-export interface IProps {}
 export interface ITableDispatchProps {}
 export interface ITableStateProps {
   name: string;

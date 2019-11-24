@@ -4,8 +4,8 @@ import fetch_films from "../../utils/fetchFilms";
 import stripHttps from "../../utils/stripHttps";
 
 const fetch_table = (url: string) => (dispatch: any) => {
-  console.log("click", url);
   dispatch({ type: DETAIL_FETCHING });
+
   Axios.get(stripHttps(url))
     .then(async res => {
       console.log(res);

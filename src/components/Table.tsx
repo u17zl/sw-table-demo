@@ -15,12 +15,11 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { fetchTable, pagiTable } from "../store/actions/tableActions";
 import fetchDetail from "../store/actions/detailActions";
 
-export interface IProps {
-  data: object[];
-}
+export interface IProps {}
 
 export interface ITableStateProps {
   data: object[];
+  isFetching: Boolean;
 }
 
 export interface ITableDispatchProps {
@@ -77,7 +76,7 @@ const SWTable = (props: any) => {
           className={classes.table}
           aria-label="simple table"
         >
-          {props.data.isFetching ? (
+          {props.isFetching ? (
             <div className={classes.loading}>
               <CircularProgress />
               <span style={{ marginLeft: 10 }}>loading...</span>
@@ -121,7 +120,7 @@ const SWTable = (props: any) => {
         </Table>
         <Grid container justify="flex-end" alignItems="center">
           <Grid item className={classes.tablePagi}>
-            {props.data.isFetching ? null : (
+            {props.isFetching ? null : (
               <Fragment>
                 {props.data.payload.previous === null ? null : (
                   <Button
@@ -155,7 +154,8 @@ const SWTable = (props: any) => {
 };
 
 const mapStateToProps = (state: any): ITableStateProps => ({
-  data: state.data
+  data: state.data,
+  isFetching: state.data.isFetching
 });
 
 const mapDispatchToProps = (dispatch: any): ITableDispatchProps => ({

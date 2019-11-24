@@ -32,6 +32,7 @@ if (
 ) {
   middleware.push((window as any).__REDUX_DEVTOOLS_EXTENSION__());
 }
+
 const store = createStore(AllReducers, InitialStates, compose(...middleware));
 
 export default store;
