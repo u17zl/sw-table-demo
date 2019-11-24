@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import "./assets/styles/App.scss";
-import { Theme, makeStyles } from "@material-ui/core/styles";
-import { Table, TableDetail } from "./components";
+import { Theme, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { Table, TableDetail } from "./components";
+import theme from "./theme";
 import "./utils/axiosSettings";
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -22,10 +23,12 @@ const useStyles = makeStyles((theme: Theme) => {
 const App: React.FC = () => {
   const classes = useStyles();
   return (
-    <Paper elevation={3} className={classes.root}>
-      <Table />
-      <TableDetail />
-    </Paper>
+    <ThemeProvider theme={theme}>
+      <Paper elevation={3} className={classes.root}>
+        <Table />
+        <TableDetail />
+      </Paper>
+    </ThemeProvider>
   );
 };
 
