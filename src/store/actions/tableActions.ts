@@ -1,8 +1,11 @@
 import Axios from "axios";
-import { FETCH_TABLE } from "./actionTypes";
+import { FETCH_TABLE, TABLE_FETCHING, PAGI_TABLE } from "./actionTypes";
+import stripHttps from "../../utils/stripHttps";
 
-const fetch_table = () => (dispatch: any) => {
-  Axios.get("https://swapi.co/api/people")
+export const fetchTable = () => (dispatch: any) => {
+  console.log("asdasd");
+  dispatch({ type: TABLE_FETCHING });
+  Axios.get("/swapi.co/api/people")
     .then(res => {
       console.log(res);
       dispatch({ type: FETCH_TABLE, payload: res.data });
@@ -11,4 +14,16 @@ const fetch_table = () => (dispatch: any) => {
       console.log(err);
     });
 };
-export default fetch_table;
+
+export const pagiTable = (url: string) => (dispatch: any) => {
+  console.log("asdasd");
+  dispatch({ type: TABLE_FETCHING });
+  Axios.get(stripHttps(url))
+    .then(res => {
+      console.log(res);
+      dispatch({ type: PAGI_TABLE, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

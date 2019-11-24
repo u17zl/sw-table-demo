@@ -1,2 +1,5 @@
 export const FETCH_TABLE = "FETCH_TABLE";
 export const FETCH_DETAIL = "FETCH_DETAIL";
+export const PAGI_TABLE = "PAGI_TABLE";
+export const TABLE_FETCHING = "TABLE_FETCHING";
+export const DETAIL_FETCHING = "DETAIL_FETCHING";

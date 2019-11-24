@@ -5,19 +5,23 @@ import thunk from "redux-thunk";
 
 const AllReducers = combineReducers({
   detail: detailReducer,
-  table: tableReducer
+  data: tableReducer
 });
 
 const InitialStates = {
   detail: {
-    name: "",
-    height: "",
-    mass: "",
-    birthYear: "",
-    gender: "",
-    list: []
+    isFetching: false,
+    payload: {
+      name: "",
+      height: "",
+      mass: "",
+      birthYear: "",
+      gender: "",
+      list: [],
+      film_list: []
+    }
   },
-  table: []
+  data: { isFetching: true }
 };
 
 const middleware = [applyMiddleware(thunk)];

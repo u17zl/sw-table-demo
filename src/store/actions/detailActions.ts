@@ -1,15 +1,18 @@
 import Axios from "axios";
-import { FETCH_DETAIL } from "./actionTypes";
+import { FETCH_DETAIL, DETAIL_FETCHING } from "./actionTypes";
 import fetch_films from "../../utils/fetchFilms";
+import stripHttps from "../../utils/stripHttps";
 
-const fetch_table = (people_id: number) => (dispatch: any) => {
-  Axios.get(`https://swapi.co/api/people/${people_id}`)
+const fetch_table = (url: string) => (dispatch: any) => {
+  console.log("click", url);
+  dispatch({ type: DETAIL_FETCHING });
+  Axios.get(stripHttps(url))
     .then(async res => {
       console.log(res);
       const film_list = await fetch_films(res.data.films);
       dispatch({
         type: FETCH_DETAIL,
-        payload: { ...res.data, films: film_list }
+        payload: { ...res.data, film_list: film_list }
       });
     })
     .catch(err => {
