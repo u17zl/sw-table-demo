@@ -5,11 +5,13 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Grid, Button, Card, Typography } from "@material-ui/core";
+import { Grid, Button, Typography } from "@material-ui/core";
+import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+
 import { fetchTable, pagiTable } from "../store/actions/tableActions";
 import fetchDetail from "../store/actions/detailActions";
 
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => {
       maxWidth: 800
     },
     loading: {
-      height: 419,
+      height: 403,
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
@@ -52,6 +54,9 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     tablePagi: {
       padding: theme.spacing(1)
+    },
+    pagiButton: {
+      marginLeft: theme.spacing(1)
     }
   };
 });
@@ -75,7 +80,7 @@ const SWTable = (props: any) => {
           {props.data.isFetching ? (
             <div className={classes.loading}>
               <CircularProgress />
-              loading...
+              <span style={{ marginLeft: 10 }}>loading...</span>
             </div>
           ) : (
             <Fragment>
@@ -120,16 +125,24 @@ const SWTable = (props: any) => {
               <Fragment>
                 {props.data.payload.previous === null ? null : (
                   <Button
+                    className={classes.pagiButton}
+                    variant="outlined"
+                    color="primary"
                     onClick={() => props.pagiTable(props.data.payload.previous)}
+                    startIcon={<KeyboardArrowLeftIcon />}
                   >
-                    back
+                    <b>back</b>
                   </Button>
                 )}
                 {props.data.payload.next === null ? null : (
                   <Button
+                    className={classes.pagiButton}
+                    variant="outlined"
+                    color="primary"
                     onClick={() => props.pagiTable(props.data.payload.next)}
+                    endIcon={<KeyboardArrowRightIcon />}
                   >
-                    next
+                    <b>next</b>
                   </Button>
                 )}
               </Fragment>

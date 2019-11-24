@@ -53,7 +53,15 @@ const TableDetail = (props: any) => {
           <Typography>Gender:{props.gender}</Typography>
           <Typography>List of Films:</Typography>
           {props.list.map((item: string) => {
-            return <Chip key={item} className={classes.chips} label={item} />;
+            return (
+              <Chip
+                key={item}
+                className={classes.chips}
+                label={item}
+                variant="outlined"
+                color="secondary"
+              />
+            );
           })}
         </Fragment>
       )}
