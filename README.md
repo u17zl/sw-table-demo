@@ -1,6 +1,6 @@
 # Star Wars Table
 
-This is a test of creating a react table components by the [The Star Wars API(https://swapi.co)](https://swapi.co)
+This is a test of creating a react table components by the [The Star Wars API(https://swapi.co)](https://swapi.co)  
 [Live Demo (https://u17zl.github.io/sw-table-demo)](https://u17zl.github.io/sw-table-demo)
 
 ## How to run
