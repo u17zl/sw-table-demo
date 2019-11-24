@@ -10,7 +10,8 @@ import "./utils/axiosSettings";
 const useStyles = makeStyles((theme: Theme) => {
   return {
     root: {
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
+      width: 800
     },
     container: {
       width: "100vw",
